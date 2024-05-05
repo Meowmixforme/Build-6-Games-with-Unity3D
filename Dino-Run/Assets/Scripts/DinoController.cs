@@ -51,4 +51,18 @@ public class DinoController : MonoBehaviour
             grounded = true;
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Obstacle")
+        {
+            Destroy(collision.gameObject);
+
+            anim.Play("Dino Death");
+
+            GetComponent<CapsuleCollider2D>().direction = CapsuleDirection2D.Horizontal;
+
+            gameOver = true;
+        }
+    }
 }
