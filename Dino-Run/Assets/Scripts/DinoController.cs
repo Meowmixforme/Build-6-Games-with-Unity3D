@@ -62,6 +62,9 @@ public class DinoController : MonoBehaviour
 
             GetComponent<CapsuleCollider2D>().direction = CapsuleDirection2D.Horizontal;
 
+            // dino death
+            GameManager.instance.GameOver();
+
             gameOver = true;
         }
     }

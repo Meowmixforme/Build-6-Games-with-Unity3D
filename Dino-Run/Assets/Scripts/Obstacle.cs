@@ -11,7 +11,9 @@ public class Obstacle : MonoBehaviour
     [SerializeField]
     float moveSpeed;
 
+    public float scorePoint;
 
+    bool scoreUpdated;
 
     private void Awake()
         {
@@ -27,13 +29,20 @@ public class Obstacle : MonoBehaviour
     // Update is called once per frame
     void Update()
         {
+            if((transform.position.x < scorePoint) && !scoreUpdated)
+            {
+                //increment score
+                GameManager.instance.IncrementScore();
+                scoreUpdated = true;
+            }
+                        
             if (transform.position.x < -15f)
             {
                 Destroy(gameObject);
             }
 
+
+
         }
-
-
 
 }
